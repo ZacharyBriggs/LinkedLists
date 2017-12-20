@@ -1,5 +1,6 @@
 #pragma once
 #include "LinkedListIterator.h"
+#include <cassert>
 template<class Type>
 class LinkedListType
 {
@@ -24,27 +25,53 @@ public:
 			return true;
 		return false;
 	}
-	//Function to return the number of nodes in the list
-	void Print() const;
+	//Prints values inside each node to the console
+	void Print() const
+	{
+		LinkedListType *temp = new LinkedListType();
+		temp->first = first;
+		for(int i = 0;i<count;i++)
+		{
+			std::cout << temp->first->info << std::endl;
+			temp->first = temp->first->link;
+		}
+		delete temp;
+	}
 	//Returns the number of nodes in the list
-	int Length();
-	//Function to delete a;; the nodes from the list
+	int Length()
+	{
+		return count;
+	}
+	//Function to delete all the nodes from the list
 	//first = NULL, last = NULL, count = 0
 	void DestroyList()
 	{
+		NodeType<Type> *temp;
 		while (first != NULL)
 		{
-
+			temp = first;
+			first = first->link;
+			delete temp;
 		}
+		last = NULL;
+		count = 0;
 	}
 	//Function to return the first element of the list
 	//The list must exist and must not empty
-	//If te lsit is empty, the program terminates; otherwise, the first element of the list is returned
-	Type Front();
+	//If the list is empty, the program terminates; otherwise, the first element of the list is returned
+	Type Front()
+	{
+		assert(first != NULL || first != 0);
+		return first;
+	}
 	//Function to return the last element of the list
 	//THe list must exist and must not be empty
 	//If the list is empty, the program terminatesl otherwise the last element fo this is returned
-	Type Back();
+	Type Back()
+	{
+		assert(last != NULL || last != 0);
+		return last;
+	}
 	//Function to return whether searchItem is in the list
 	//Returns true if searchItem is in the list, otherwise the value false is reutned
 	bool Search(const Type&) const;
@@ -62,10 +89,17 @@ public:
 	void DeleteNode(const Type&);
 	//Returns an iterator at the beginning of the linked list
 	//Reutns an iterator such that current is set to first
-	LinkedListIterator<Type> Begin();
+	LinkedListIterator<Type> Begin()
+	{
+		LinkedListIterator *temp = new LinkedListIterator();
+		temp->
+	}
 	//Returns an iterator at the end of the linked list
 	//Returns an iterator such that current is set to NUll
-	LinkedListIterator<Type> End();
+	LinkedListIterator<Type> End()
+	{
+
+	}
 	//Default constructor
 	LinkedListType()
 	{
