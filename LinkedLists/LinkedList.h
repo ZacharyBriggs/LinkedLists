@@ -30,7 +30,7 @@ public:
 	{
 		LinkedListType *temp = new LinkedListType();
 		temp->first = first;
-		for(int i = 0;i<count;i++)
+		for (int i = 0; i < count; i++)
 		{
 			std::cout << temp->first->info << std::endl;
 			temp->first = temp->first->link;
@@ -74,31 +74,54 @@ public:
 	}
 	//Function to return whether searchItem is in the list
 	//Returns true if searchItem is in the list, otherwise the value false is reutned
-	bool Search(const Type&) const;
+	bool Search(const Type& searchItem) const
+	{
+		NodeType<Type> temp;
+		temp = first;
+		while (temp != NULL)
+		{
+			if (searchItem == temp)
+			{
+				return true;
+			}
+			temp = first->link
+		}
+		return false;
+	}
 	//Function to insert newItem at the beginning of the list
 	//First point tho the new listl, newItem is inserted at the beginning of the list
 	//last points to the last node in the list, and count is incremented by 1
-	void InsertFirst(const Type&);
+	void InsertFirst(const Type& newItem)
+	{
+
+	}
 	//Function to insert newItem at the end of the list
 	//Furst oiubt to the new list, newItem is inserted at the end of the list, last
 	//points to the last node in the list and count is incremented by 1
-	void InsertLast(const Type&);
+	void InsertLast(const Type& newItem)
+	{
+
+	}
 	//Deletes deleteItem from the list
 	//If found, the node containing deleteItem is deleted from the list.
 	//First point to the first node, list points to the last node of the updated list, and counts is decremented by 1
-	void DeleteNode(const Type&);
+	void DeleteNode(const Type& deleteItem)
+	{
+
+	}
 	//Returns an iterator at the beginning of the linked list
 	//Reutns an iterator such that current is set to first
 	LinkedListIterator<Type> Begin()
 	{
-		LinkedListIterator *temp = new LinkedListIterator();
-		temp->
+		LinkedListIterator<Type> *temp = new LinkedListIterator<Type>();
+		temp->current = first;
 	}
 	//Returns an iterator at the end of the linked list
 	//Returns an iterator such that current is set to NUll
 	LinkedListIterator<Type> End()
 	{
-
+		LinkedListIterator<Type> *temp = new LinkedListIterator<Type>();
+		temp->current = last;
 	}
 	//Default constructor
 	LinkedListType()
@@ -110,11 +133,14 @@ public:
 	//copy constructor
 	LinkedListType(const LinkedListType<Type>&);
 	//destructor
-	//Dletes all the nodes from the list
+	//Deletes all the nodes from the list
 	//the list object is destroyed
 	~LinkedListType();
 private:
-	//Function to make a copy of otherlost
+	//Function to make a copy of otherList
 	//A copy of otherList is created and assigned to this list
-	void CopyList(const LinkedListType<Type>&);
+	void CopyList(const LinkedListType<Type>&)
+	{
+
+	}
 };

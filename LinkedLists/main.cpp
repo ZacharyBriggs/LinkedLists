@@ -10,7 +10,9 @@ int main()
 	NodeType<int> z = { 76 };
 	a.link = &b;
 	b.link = &c;
+	c.link = &x;
 	x.link = &y;
+	y.link = &z;
 
 	LinkedListIterator<int> iter = LinkedListIterator<int>(&a);
 	iter.operator++();
