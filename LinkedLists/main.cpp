@@ -1,19 +1,15 @@
-#include "Node.h"
-#include "LinkedListIterator.h"
+#include "LinkedList.h"
 int main()
 {
 	NodeType<int> a = { 12 };
-	NodeType<int> b = { 4 };
-	NodeType<int> c = { 999 };
-	NodeType<int> x = {6};
-	NodeType<int> y = { 42};
-	NodeType<int> z = { 76 };
-	a.link = &b;
-	b.link = &c;
-	c.link = &x;
-	x.link = &y;
-	y.link = &z;
-
-	LinkedListIterator<int> iter = LinkedListIterator<int>(&a);
-	iter.operator++();
+	LinkedListType<int> *test = new LinkedListType<int>();
+	LinkedListType<int> *test2 = new LinkedListType<int>();
+	test->InitializeList();
+	test->InsertFirst(12);
+	test->InsertFirst(8);
+	test->InsertLast(39);
+	test->InsertLast(40);
+	test2->InsertLast(22);
+	test2->InsertFirst(1);
+	test->Print();
 }

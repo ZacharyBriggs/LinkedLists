@@ -1,5 +1,4 @@
 #pragma once
-#include <cstddef>
 template<class Type>
 struct NodeType
 {

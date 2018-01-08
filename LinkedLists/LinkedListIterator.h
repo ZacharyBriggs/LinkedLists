@@ -15,7 +15,7 @@ public:
 	{
 		current = ptr;
 	}
-	//Overloads defrence operator and returns info contained within node
+	//Overloads derefrence operator and returns info contained within node
 	Type *operator*()
 	{
 		return current->info;

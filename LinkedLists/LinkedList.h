@@ -1,5 +1,6 @@
 #pragma once
 #include "LinkedListIterator.h"
+#include <iostream>
 #include <cassert>
 template<class Type>
 class LinkedListType
@@ -26,16 +27,15 @@ public:
 		return false;
 	}
 	//Prints values inside each node to the console
-	void Print() const
+	const void Print()
 	{
-		LinkedListType *temp = new LinkedListType();
-		temp->first = first;
+		NodeType<Type> *temp;
+		temp = first;
 		for (int i = 0; i < count; i++)
 		{
-			std::cout << temp->first->info << std::endl;
-			temp->first = temp->first->link;
+			std::cout << temp->info << std::endl;
+			temp = temp->link;
 		}
-		delete temp;
 	}
 	//Returns the number of nodes in the list
 	int Length()
@@ -80,34 +80,47 @@ public:
 		temp = first;
 		while (temp != NULL)
 		{
-			if (searchItem == temp)
+			if (searchItem == temp.info)
 			{
 				return true;
 			}
-			temp = first->link
+			temp = temp->link
 		}
 		return false;
 	}
 	//Function to insert newItem at the beginning of the list
-	//First point tho the new listl, newItem is inserted at the beginning of the list
+	//First point to the new list, newItem is inserted at the beginning of the list
 	//last points to the last node in the list, and count is incremented by 1
 	void InsertFirst(const Type& newItem)
 	{
-
+		NodeType<Type> *firstNode = new NodeType<Type>;
+		firstNode->info = newItem;
+		firstNode->link = first;
+		first = firstNode;
+		if (count == 0)
+			last = first;
+		count++;
 	}
 	//Function to insert newItem at the end of the list
 	//Furst oiubt to the new list, newItem is inserted at the end of the list, last
 	//points to the last node in the list and count is incremented by 1
 	void InsertLast(const Type& newItem)
 	{
-
+		NodeType<Type> *lastNode = new NodeType<Type>;
+		lastNode->info = newItem;
+		last->link = lastNode;
+		last = lastNode;
+		count++;
 	}
 	//Deletes deleteItem from the list
 	//If found, the node containing deleteItem is deleted from the list.
 	//First point to the first node, list points to the last node of the updated list, and counts is decremented by 1
 	void DeleteNode(const Type& deleteItem)
 	{
-
+		if (count > 0)
+		{
+			count -= 1;
+		}
 	}
 	//Returns an iterator at the beginning of the linked list
 	//Reutns an iterator such that current is set to first
@@ -131,7 +144,10 @@ public:
 		count = 0;
 	}
 	//copy constructor
-	LinkedListType(const LinkedListType<Type>&);
+	LinkedListType(const LinkedListType<Type>&)
+	{
+
+	}
 	//destructor
 	//Deletes all the nodes from the list
 	//the list object is destroyed
@@ -139,8 +155,16 @@ public:
 private:
 	//Function to make a copy of otherList
 	//A copy of otherList is created and assigned to this list
-	void CopyList(const LinkedListType<Type>&)
+	void CopyList(const LinkedListType<Type>& otherList)
 	{
+		DestroyList();
+		LinkedListIterator<int> iter = LinkedListIterator<int>(otherList.first);
+		first = iter.current;
+		iter.operator++();
+		for (int i = 0; i < otherList.count)
+		{
 
+			iter.operator++
+		}
 	}
 };
