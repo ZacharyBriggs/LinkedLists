@@ -11,7 +11,7 @@ protected:
 	NodeType<Type> *last; //pointer to the last node of the list
 public:
 	//Overloads assignment operator
-	const LinkListType<Type>& operator=(const LinkedListType<Type>&);
+	/*const LinkListType<Type>& operator=(const LinkedListType<Type>&);*/
 	//Initilializes the list to an empty state
 	//first = NULL , last = NULL, count = 0
 	void InitializeList()
@@ -47,7 +47,7 @@ public:
 	void DestroyList()
 	{
 		NodeType<Type> *temp;
-		while (first != NULL)
+		for (int i = 0;i>count;i++)
 		{
 			temp = first;
 			first = first->link;
@@ -151,20 +151,23 @@ public:
 	//destructor
 	//Deletes all the nodes from the list
 	//the list object is destroyed
-	~LinkedListType();
-private:
+	~LinkedListType()
+	{
+
+	}
 	//Function to make a copy of otherList
 	//A copy of otherList is created and assigned to this list
 	void CopyList(const LinkedListType<Type>& otherList)
 	{
 		DestroyList();
-		LinkedListIterator<int> iter = LinkedListIterator<int>(otherList.first);
-		first = iter.current;
-		iter.operator++();
-		for (int i = 0; i < otherList.count)
+		NodeType<Type> *currentNode = new NodeType<Type>;
+		currentNode->info = otherList.first->info;
+		InsertFirst(currentNode->info);
+		currentNode = otherList.first->link;
+		for (int i = 0; i < otherList.count-1;i++)
 		{
-
-			iter.operator++
+			InsertLast(currentNode->info);
+			currentNode = currentNode->link;
 		}
 	}
 };
