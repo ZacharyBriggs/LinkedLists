@@ -11,6 +11,7 @@ int main()
 	test->InsertLast(40);
 	test2->InsertFirst(1);
 	test2->InsertLast(22);
-	test2->CopyList(*test);
 	test->Print();
+	test2->Print();
+	LinkedListType<int>test3(*test);
 }

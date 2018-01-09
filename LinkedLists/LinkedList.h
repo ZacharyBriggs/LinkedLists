@@ -117,6 +117,7 @@ public:
 	//First point to the first node, list points to the last node of the updated list, and counts is decremented by 1
 	void DeleteNode(const Type& deleteItem)
 	{
+		delete deleteItem;
 		if (count > 0)
 		{
 			count -= 1;
@@ -144,17 +145,19 @@ public:
 		count = 0;
 	}
 	//copy constructor
-	LinkedListType(const LinkedListType<Type>&)
+	LinkedListType(const LinkedListType<Type>& otherList)
 	{
-
+		InitializeList();
+		CopyList(otherList);
 	}
 	//destructor
 	//Deletes all the nodes from the list
 	//the list object is destroyed
 	~LinkedListType()
 	{
-
+		DestroyList();
 	}
+	private:
 	//Function to make a copy of otherList
 	//A copy of otherList is created and assigned to this list
 	void CopyList(const LinkedListType<Type>& otherList)
