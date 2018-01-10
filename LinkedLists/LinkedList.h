@@ -11,7 +11,10 @@ protected:
 	NodeType<Type> *last; //pointer to the last node of the list
 public:
 	//Overloads assignment operator
-	/*const LinkListType<Type>& operator=(const LinkedListType<Type>&);*/
+	const LinkedListType<Type>& operator=(const LinkedListType<Type>& otherList)
+	{
+		otherList.CopyList();
+	}
 	//Initilializes the list to an empty state
 	//first = NULL , last = NULL, count = 0
 	void InitializeList()
